@@ -37,7 +37,8 @@ def iter_coefficients(n_dims, step):
             yield ws + (d,)
         if len(ws) < n_dims:
             for w in np.arange(0, d + step - sys.float_info.epsilon, step):
-                yield from go(ws + (w,))
+                for x in go(ws + (w,)):
+                    yield x
 
     return go(())
 
